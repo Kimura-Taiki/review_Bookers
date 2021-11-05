@@ -1,2 +1,19 @@
 <h1>Books#edit</h1>
 <p>Find me in app/views/books/edit.html.erb</p>
+
+<h1>Editing Book</h1>
+<%= render 'books/error', record: @book %>
+<%= form_with model: @book, local: true do |b| %>
+  <div class = "field">
+    <%= b.label :title, for: "Title" %>
+    <%= b.text_field :title %>
+  </div>
+  <div class = "field">
+    <%= b.label :body, for: "Body" %>
+    <%= b.text_area :body %>
+  </div>
+  <div class = "actions">
+    <%= b.submit %>
+  </div>
+<% end %>
+<%= link_to "Show", book_path(@book) %> | <%= link_to "Back", books_path %>

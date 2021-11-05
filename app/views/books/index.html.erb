@@ -23,7 +23,17 @@
   </tbody>
 </table>
 <h2>New Book</h2>
-<%= form_with model: @new, local: true do |b| %>
-  <%= b.label :title "Title" %>
-  <%= b.text_field :title %>
+<%= render 'books/error', record: @book %>
+<%= form_with model: @book, local: true do |b| %>
+  <div class = "field">
+    <%= b.label :title, for: "Title" %>
+    <%= b.text_field :title %>
+  </div>
+  <div class = "field">
+    <%= b.label :body, for: "Body" %>
+    <%= b.text_area :body %>
+  </div>
+  <div class = "actions">
+    <%= b.submit %>
+  </div>
 <% end %>
