@@ -36,8 +36,8 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.2]
       # マイグレーションファイルのchangeメソッドのcreate_tableブロックの端に
       # この3行を入れました。
       # 'rails db:migrate'でデータベースを作る前に属性は追加する必要が多分あります。
-      # t.string :name
-      t.string :image_id
+      t.string :name
+      t.string :profile_image_id
       t.text :introduction
 
       t.timestamps null: false
