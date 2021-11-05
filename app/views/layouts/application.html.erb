@@ -10,6 +10,27 @@
   </head>
 
   <body>
+    <!--位置的にはヘッダーの役割をします-->
+    <!--user_signed_inはdevise側で用意しているヘルパーです-->
+    <!--userがログイン中ならtrueが、ログアウト中ならfalseが返されます-->
+    <% if user_signed_in? %>
+      <li>
+        <!--Userがログインしている時に出ます。-->
+        <!--destroy_user_session_pathは勝手にログアウト処理をしてくれます。-->
+        <!--動詞がDELETE、アドレスが/users/sign_out(.:format)、アクションがdevise/sessions#destroyです。-->
+        <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+      </li>
+    <% else %>
+      <!--Userがログインしている時に出ます。-->
+      <li>
+        <!--動詞がGET、アドレスが/users/sign_up(.:format)、アクションがdevise/registrations#newです。-->
+        <%= link_to "新規登録", new_user_registration_path %>
+      </li>
+      <li>
+        <!--動詞がGET、アドレスが/users/sign_in(.:format)、アクションがdevise/sessions#newです。-->
+        <%= link_to "ログイン", new_user_session_path %>
+      </li>
+    <% end %>
     <%= yield %>
   </body>
 </html>
