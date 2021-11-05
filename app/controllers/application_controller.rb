@@ -10,6 +10,10 @@ class ApplicationController < ActionController::Base
   def configure_permitted_parameters
     # configure_permitted_parametersでは、devise_parameter_sanitizer.permitでnameのデータ操作を許可するアクションメソッドが指定されています。
     # 今回の場合だと、:sign_up時に:nameデータの書き換えが許されます
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:name])
+    # devise_parameter_sanitizer.permit(:sign_up, keys: [:name])
+    # config.authentication_keysのログイン鍵を:nameへ変えたので
+    # ストロングパラメーターとして許可する属性を:emailへ変えます。
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:email])
+
   end
 end
