@@ -1,0 +1,29 @@
+<h1>Books#index</h1>
+<p>Find me in app/views/books/index.html.erb</p>
+
+<h1>Books</h1>
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Body</th>
+      <th colspan = "3"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @books.each do |b| %>
+      <tr>
+        <td><%= b.title %></td>
+        <td><%= b.body %></td>
+        <td><%= link_to "Show", book_path(b) %></td>
+        <td><%= link_to "Edit", edit_book_path(b) %></td>
+        <td><%= link_to "Destroy", book_path(b), method: :delete %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<h2>New Book</h2>
+<%= form_with model: @new, local: true do |b| %>
+  <%= b.label :title "Title" %>
+  <%= b.text_field :title %>
+<% end %>
