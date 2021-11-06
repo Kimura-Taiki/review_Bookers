@@ -5,6 +5,13 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
+    <!--viewport補足-->
+    <!--・viewportは描画するための仮想画面を作る-->
+    <!--・contentでは仮想画面の具体的な値を定義する-->
+    <!--・widthは画面の大きさ、仮にスマホ基準の'width=360'とでも定義すると全幅360pxの画面になってしまう-->
+    <!--・initial-scaleは仮想画面の拡大率、0.5にすれば縮小表示になるが、余り手を付けたくないなあー-->
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
