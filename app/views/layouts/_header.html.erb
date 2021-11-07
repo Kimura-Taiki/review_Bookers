@@ -1,37 +1,105 @@
+<!--shadow-sm => 小さな(SMall)な陰影(shadow)-->
+<!--・shadow単品で影を作れます。-->
+<!--・-none(無い),-sm(小さな),-lg(大きな)の接尾辞を入れる事で影の多寡を調節できます。-->
 <header class="shadow-sm">
+
+  <!--①：navbar-->
+  <!--  ナビバーを示す記号です。-->
+  <!--②：navbar-expand-lg-->
+  <!--  指定したブレークポイント（画面幅）に応じてナビバーを横並びか、-->
+  <!--  ナビゲーションアイコン（ハンバーガーメニュー）か切り替えて表示します。-->
+  <!--  画面幅の接尾辞は無標(<576),-sm(>=576),-md(>=768),-->
+  <!--  -lg(>=992),-xl(>=1200),-xxl(>=1400)の６つです。-->
+  <!--  今回の場合だと992px以上の場合だけ横並びにするという意味になります。-->
+  <!--③：navbar-light-->
+  <!--  指定したテーマカラーでカラースキーム(色構成)を作ります。-->
+  <!--  色構成の接尾辞は-primary(青),-secondary(灰),success(緑),-->
+  <!--  danger(赤),warning(黄),info(水),light(白),dark(黒)の８色です。-->
   <nav class="navbar navbar-expand-lg navbar-light">
+
+    <!--container-->
+    <!--  グリットシステムの運用に便利なクラスです。地味に接尾辞があります。-->
+    <!--  ①：(無標)-->
+    <!--    画面幅に応じて固定された幅とマージンを取ってくれます。-->
+    <!--    元の画面幅が576px以下だと常に幅100%になります。-->
+    <!--  ②：-sm,-md,-lg,-xl,-xxl-->
+    <!--    特定の画面幅未満だと幅100%、それ以上だと無標と同じ挙動になります。-->
+    <!--  ③：-fluid-->
+    <!--    画面幅に依存せず常に幅100%になります。-->
     <div class="container">
+
+      <!--①：navbar-brand-->
+      <!--  ブランド名表示用のクラスです。-->
+      <!--  パディングとマージンを取ってくれて、文字サイズが1.25倍になります。-->
+      <!--②：p-3-->
+      <!--  四方向へパディングを$spacerの１倍伸ばします。-->
       <a class="navbar-brand p-3" href="/"><%= image_tag('logo.png') %></a>
+
+      <!--navbar-toggler-->
+      <!--  ナビゲーションアイコン(ハンバーガーボタン)の枠部分です。-->
+      <!--　①：type="button"-->
+      <!--　　ボタンアイコンであることを示します。-->
+      <!--　②：data-toggle="collapse"-->
+      <!--　　トグルボタン(ONとOFFが切り替わるボタン)で開閉されるブロックの-->
+      <!--　　"collapse"クラスを指定しているようです。よく分かりません。-->
+      <!--　　名前自体に意味があるみたいで、名前を挿げ替えても上手く動きません。-->
+      <!--　③：data-target="#navbarNavDropdown"-->
+      <!--　　トグルボタンで実際に開閉されるブロックの固有名を指定します。-->
+      <!--　　固有名なので、こちらは対応するブロックの固有名と共に名前を挿げ替えれば-->
+      <!--　　普通に動いてくれます。-->
+      <!--　④：aria-controls="novbarNavDropdown"-->
+      <!--　　指定した要素が値に指定した要素を制御することを示すWAI-ARIAの属性です。-->
+      <!--　　・・・・との事だそうです。多分トグルボタンに対応する固有名を与えれば良いかなと。-->
+      <!--　⑤：aria-expanded="false"-->
+      <!--　　「要素が拡げられているか？」を示します。-->
+      <!--　　今回だと初期値では畳まれているのでfalseです。-->
+      <!--　⑥：aria-label="Toggle navigation"-->
+      <!--　　aria-label 属性は、現在の要素にラベル付けする文字列を定義するために使用されます。 -->
+      <!--　　これはテキストラベルが画面に表示されない場合に使用します。 -->
+      <!--　　要素にラベル付けする目に見えるテキストがある場合は、代わりに aria-labelledby を使用します。-->
+      <!--　　この属性は、一般的な HTML 要素で使用できます。 ARIA の role が割り当てられている要素に限定されるものではありません。-->
+      <!--　　だから日本語を入れることもできます。すごいですね。とても良かった。-->
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <!--navbar-toggler-icon-->
+        <!--  ナビゲーションアイコン（ハンバーガーメニュー）の三本線部分です。-->
+        <!--  ※この三本線はnavbar-toggler-iconのclassに対してbackground-imageで画像が割り当てられています。-->
+        <!--  検証ツールでnavbar-toggler-iconのclassを確認すると分かやすいです。-->
         <span class="navbar-toggler-icon"></span>
       </button>
+      <!--①：collapse-->
+      <!--　お役目のありそうな名刺です。書き換えると動きません。-->
+      <!--②：navbar-collapse-->
+      <!--　Bootstrapのクラスです。これも書き換えたら動きません。-->
+      <!--③：#navbarNavDropdown-->
+      <!--　buttonブロックの照準先です。照準元と同期できれば書き換えれます。-->
       <div class="collapse navbar-collapse" id="navbarNavDropdown">
         <ul class="navbar-nav ml-auto">
         <% if user_signed_in? %>
           <li class="nav-item">
-            ログアウト
+            <div class = "nav-link text-dark">ログアウト</div>
             <%#= link_to "ログアウト", destroy_user_session_path, method: :delete, class: 'nav-link text-dark' %>
           </li>
           <li class="nav-item">
-            投稿フォーム
+            <div class = "nav-link text-dark">投稿フォーム</div>
             <%#= link_to '投稿フォーム', new_post_image_path, class: 'nav-link text-dark' %>
           </li>
           <li class="nav-item">
-            マイページ
+            <div class = "nav-link text-dark">マイページ</div>
             <%#= link_to 'マイページ', user_path(current_user.id), class: 'nav-link text-dark' %>
           </li>
         <% else %>
           <li class="nav-item">
-            新規登録
+            <div class = "nav-link text-dark">新規登録</div>
             <%#= link_to "新規登録", new_user_registration_path, class: 'nav-link text-dark' %>
           </li>
           <li class="nav-item">
-            ログイン
+            <div class = "nav-link text-dark">ログイン</div>
             <%#= link_to "ログイン", new_user_session_path, class: 'nav-link text-dark' %>
           </li>
         <% end %>
         </ul>
       </div>
+
     </div>
   </nav>
 </header>

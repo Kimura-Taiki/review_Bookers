@@ -11,7 +11,12 @@
     <!--・widthは画面の大きさ、仮にスマホ基準の'width=360'とでも定義すると全幅360pxの画面になってしまう-->
     <!--・initial-scaleは仮想画面の拡大率、0.5にすれば縮小表示になるが、余り手を付けたくないなあー-->
     <meta name="viewport" content="width=device-width,initial-scale=1">
-
+    
+    <!--fontawesomeのscript要素はstylesheetの前に記述します。-->
+    src属性で導入するスクリプトのアドレスを指定します。
+    crossorigin属性で
+    <script src="https://kit.fontawesome.com/e96e7bc039.js" crossorigin="anonymous"></script>
+    
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
