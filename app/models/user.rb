@@ -14,4 +14,10 @@ class User < ApplicationRecord
   # また、dependent: :destroyと書き加えることでUserモデル削除時に
   # 麾下のBookモデルを一網打尽に削除することができます
   has_many :books, dependent: :destroy
+
+  # refileで画像処理を行う場合のおまじないです
+  # これを抜いて画像投稿とかすると異常値を投稿してしまい、
+  # 最悪db:migrate:resetで全データ道連れに精算する羽目になりかねません
+  attachment :profile_image
+
 end
