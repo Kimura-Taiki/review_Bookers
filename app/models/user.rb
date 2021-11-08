@@ -9,4 +9,9 @@ class User < ApplicationRecord
   # :recoverable（パスワードをリセット）
   # :rememberable（ログイン情報を保存）
   # :validatable（emailのフォーマットなどのバリデーション）
+
+  # Bookモデルを複数所有しているという関係性です
+  # また、dependent: :destroyと書き加えることでUserモデル削除時に
+  # 麾下のBookモデルを一網打尽に削除することができます
+  has_many :books, dependent: :destroy
 end

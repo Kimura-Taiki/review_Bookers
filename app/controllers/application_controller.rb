@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
   # 一方、protectedは他コントローラーからも呼び出せます
   protected
 
-  
+  # ログイン後のリンク先をデフォルト値から書き換えるメソッドです
   def after_sign_in_path_for(resource)
     user_path(resource)
   end
