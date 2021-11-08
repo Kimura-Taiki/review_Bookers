@@ -11,39 +11,22 @@
     <!--・widthは画面の大きさ、仮にスマホ基準の'width=360'とでも定義すると全幅360pxの画面になってしまう-->
     <!--・initial-scaleは仮想画面の拡大率、0.5にすれば縮小表示になるが、余り手を付けたくないなあー-->
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    
+
     <!--fontawesomeのscript要素はstylesheetの前に記述します。-->
-    src属性で導入するスクリプトのアドレスを指定します。
-    crossorigin属性で
+    <!--src属性で導入するスクリプトのアドレスを指定します。-->
+    <!--crossorigin属性でCORS※で共有される権限の幅を指定します。-->
+    <!--※Crooss-Origin(オリジン間) Resource(リソース) Sharing(共有)-->
     <script src="https://kit.fontawesome.com/e96e7bc039.js" crossorigin="anonymous"></script>
-    
+
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
     <%= render 'layouts/header' %>
-    <!--位置的にはヘッダーの役割をします-->
-    <!--user_signed_inはdevise側で用意しているヘルパーです-->
-    <!--userがログイン中ならtrueが、ログアウト中ならfalseが返されます-->
-    <% if user_signed_in? %>
-      <li>
-        <!--Userがログインしている時に出ます。-->
-        <!--destroy_user_session_pathは勝手にログアウト処理をしてくれます。-->
-        <!--動詞がDELETE、アドレスが/users/sign_out(.:format)、アクションがdevise/sessions#destroyです。-->
-        <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
-      </li>
-    <% else %>
-      <!--Userがログインしている時に出ます。-->
-      <li>
-        <!--動詞がGET、アドレスが/users/sign_up(.:format)、アクションがdevise/registrations#newです。-->
-        <%= link_to "新規登録", new_user_registration_path %>
-      </li>
-      <li>
-        <!--動詞がGET、アドレスが/users/sign_in(.:format)、アクションがdevise/sessions#newです。-->
-        <%= link_to "ログイン", new_user_session_path %>
-      </li>
-    <% end %>
+    <!--フラッシュメッセージを表示する行です。-->
+    <p id="notice" class = "text-success"><%= notice %></p>
+    <p id="alert" class = "text-danger"><%= alert %></p>
     <%= yield %>
   </body>
 </html>

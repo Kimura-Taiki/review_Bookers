@@ -6,6 +6,11 @@ class ApplicationController < ActionController::Base
   # 一方、protectedは他コントローラーからも呼び出せます
   protected
 
+  
+  def after_sign_in_path_for(resource)
+    user_path(resource)
+  end
+
   # 機能としては他コントローラーの*****_params(ストロングパラメーター)と同様の機能です。
   def configure_permitted_parameters
     # configure_permitted_parametersでは、devise_parameter_sanitizer.permitでnameのデータ操作を許可するアクションメソッドが指定されています。
