@@ -19,5 +19,12 @@ class User < ApplicationRecord
   # これを抜いて画像投稿とかすると異常値を投稿してしまい、
   # 最悪db:migrate:resetで全データ道連れに精算する羽目になりかねません
   attachment :profile_image
-
+  
+  バリテーションです
+  # :nameにはpresence:,length:,uniqueness:属性を入れます
+  # :introductionにはlength:属性だけ入れます
+  validates :name, presence: true,
+                   length: {minimum: 2, maximum: 20},
+                   uniqueness: true
+  validates :introduction, length: {maximum: 50}
 end
