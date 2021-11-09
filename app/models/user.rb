@@ -20,7 +20,7 @@ class User < ApplicationRecord
   # 最悪db:migrate:resetで全データ道連れに精算する羽目になりかねません
   attachment :profile_image
   
-  バリテーションです
+  # バリテーションです
   # :nameにはpresence:,length:,uniqueness:属性を入れます
   # :introductionにはlength:属性だけ入れます
   validates :name, presence: true,
