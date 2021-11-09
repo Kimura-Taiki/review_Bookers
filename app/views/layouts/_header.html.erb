@@ -77,7 +77,7 @@
         <!--user_signed_inはdevise側で用意しているヘルパーです-->
         <!--userがログイン中ならtrueが、ログアウト中ならfalseが返されます-->
         <% if user_signed_in? %>
-          <%= render 'layouts/li', text: "Home", url: root_path, icon: "fa-home" %>
+          <%= render 'layouts/li', text: "Home", url: user_path(current_user), icon: "fa-home" %>
           <%= render 'layouts/li', text: "Users", url: users_path, icon: "fa-users" %>
           <%= render 'layouts/li', text: "Books", url: books_path, icon: "fa-book-open" %>
           <!--ログアウト時だけHTTP動詞が:deleteなので部分テンプレート化から外します。-->

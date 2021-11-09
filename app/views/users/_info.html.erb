@@ -1,7 +1,7 @@
 <h2>User info</h2>
 <table class = "table">
   <!--fallback属性で画像が無い際の代用画像を示します-->
-  <%= attachment_image_tag user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg"%>
+  <%= attachment_image_tag user, :profile_image, size: "60x60", fallback: "no_image.jpg"%>
   <tbody>
     <tr>
       <th>name</th>
