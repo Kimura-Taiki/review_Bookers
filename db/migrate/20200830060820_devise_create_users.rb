@@ -32,14 +32,9 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.2]
       # t.string   :unlock_token # Only if unlock strategy is :email or :both
       # t.datetime :locked_at
 
-      # 今回、Userモデルに名前、画像ID、紹介の3属性を入れたかったので
-      # マイグレーションファイルのchangeメソッドのcreate_tableブロックの端に
-      # この3行を入れました。
-      # 'rails db:migrate'でデータベースを作る前に属性は追加する必要が多分あります。
       t.string :name
-      t.string :profile_image_id
       t.text :introduction
-
+      t.string :profile_image_id
       t.timestamps null: false
     end
 

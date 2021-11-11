@@ -1,43 +1,19 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Bk</title>
+    <title>Bookers2-debug</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
-    <!--viewport補足-->
-    <!--・viewportは描画するための仮想画面を作る-->
-    <!--・contentでは仮想画面の具体的な値を定義する-->
-    <!--・widthは画面の大きさ、仮にスマホ基準の'width=360'とでも定義すると全幅360pxの画面になってしまう-->
-    <!--・initial-scaleは仮想画面の拡大率、0.5にすれば縮小表示になるが、余り手を付けたくないなあー-->
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-
-    <!--fontawesomeのscript要素はstylesheetの前に記述します。-->
-    <!--src属性で導入するスクリプトのアドレスを指定します。-->
-    <!--crossorigin属性でCORS※で共有される権限の幅を指定します。-->
-    <!--※Crooss-Origin(オリジン間) Resource(リソース) Sharing(共有)-->
-    <script src="https://kit.fontawesome.com/e96e7bc039.js" crossorigin="anonymous"></script>
-
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-
   <body>
     <%= render 'layouts/header' %>
-    <main>
-      <!--フラッシュメッセージを表示する行です。-->
-      <p id="notice" class = "text-success"><%= notice %></p>
-      <p id="alert" class = "text-danger"><%= alert %></p>
-      <%= yield %>
-    </main>
-    <footer>
-      <div class="container mt-5">
-        <div class="row">
-          <div class="mx-auto">
-            <p>CopyRight Infratop.inc</p>
-          </div>
-        </div>
-      </div>
-    </footer>
+      <main>
+        <p id="notice"><%= notice %></p>
+        <%= yield %>
+      </main>
+    <%= render 'layouts/footer' %>
   </body>
 </html>

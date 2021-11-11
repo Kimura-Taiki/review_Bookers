@@ -1,99 +1,25 @@
-<!--shadow-sm => 小さな(SMall)な陰影(shadow)-->
-<!--・shadow単品で影を作れます。-->
-<!--・-none(無い),-sm(小さな),-lg(大きな)の接尾辞を入れる事で影の多寡を調節できます。-->
-<!--<header class="shadow-sm">-->
 <header>
-
-  <!--①：navbar-->
-  <!--  ナビバーを示す記号です。-->
-  <!--②：navbar-expand-lg-->
-  <!--  指定したブレークポイント（画面幅）に応じてナビバーを横並びか、-->
-  <!--  ナビゲーションアイコン（ハンバーガーメニュー）か切り替えて表示します。-->
-  <!--  画面幅の接尾辞は無標(<576),-sm(>=576),-md(>=768),-->
-  <!--  -lg(>=992),-xl(>=1200),-xxl(>=1400)の６つです。-->
-  <!--  今回の場合だと992px以上の場合だけ横並びにするという意味になります。-->
-  <!--③：navbar-light-->
-  <!--　ナビバーの色構成を作ります。-->
-  <!--　色構成の接尾辞は-light(明),-dark(暗)の２つです。-->
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-
-    <!--container-->
-    <!--  グリットシステムの運用に便利なクラスです。地味に接尾辞があります。-->
-    <!--  ①：(無標)-->
-    <!--    画面幅に応じて固定された幅とマージンを取ってくれます。-->
-    <!--    元の画面幅が576px以下だと常に幅100%になります。-->
-    <!--  ②：-sm,-md,-lg,-xl,-xxl-->
-    <!--    特定の画面幅未満だと幅100%、それ以上だと無標と同じ挙動になります。-->
-    <!--  ③：-fluid-->
-    <!--    画面幅に依存せず常に幅100%になります。-->
     <div class="container">
-
-      <!--①：navbar-brand-->
-      <!--  ブランド名表示用のクラスです。-->
-      <!--  パディングとマージンを取ってくれて、文字サイズが1.25倍になります。-->
-      <!--②：p-3-->
-      <!--  四方向へパディングを$spacerの１倍伸ばします。-->
-      <a class="navbar-brand" href="/">Bookers</a>
-
-      <!--navbar-toggler-->
-      <!--  ナビゲーションアイコン(ハンバーガーボタン)の枠部分です。-->
-      <!--　①：type="button"-->
-      <!--　　ボタンアイコンであることを示します。-->
-      <!--　②：data-toggle="collapse"-->
-      <!--　　トグルボタン(ONとOFFが切り替わるボタン)で開閉されるブロックの-->
-      <!--　　"collapse"クラスを指定しているようです。よく分かりません。-->
-      <!--　　名前自体に意味があるみたいで、名前を挿げ替えても上手く動きません。-->
-      <!--　③：data-target="#navbarNavDropdown"-->
-      <!--　　トグルボタンで実際に開閉されるブロックの固有名を指定します。-->
-      <!--　　固有名なので、こちらは対応するブロックの固有名と共に名前を挿げ替えれば-->
-      <!--　　普通に動いてくれます。-->
-      <!--　④：aria-controls="novbarNavDropdown"-->
-      <!--　　指定した要素が値に指定した要素を制御することを示すWAI-ARIAの属性です。-->
-      <!--　　・・・・との事だそうです。多分トグルボタンに対応する固有名を与えれば良いかなと。-->
-      <!--　⑤：aria-expanded="false"-->
-      <!--　　「要素が拡げられているか？」を示します。-->
-      <!--　　今回だと初期値では畳まれているのでfalseです。-->
-      <!--　⑥：aria-label="Toggle navigation"-->
-      <!--　　aria-label 属性は、現在の要素にラベル付けする文字列を定義するために使用されます。 -->
-      <!--　　これはテキストラベルが画面に表示されない場合に使用します。 -->
-      <!--　　要素にラベル付けする目に見えるテキストがある場合は、代わりに aria-labelledby を使用します。-->
-      <!--　　この属性は、一般的な HTML 要素で使用できます。 ARIA の role が割り当てられている要素に限定されるものではありません。-->
-      <!--　　だから日本語を入れることもできます。すごいですね。とても良かった。-->
+      <a class="navbar-brand" href="/"><span>Bookers</span></a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-        <!--navbar-toggler-icon-->
-        <!--  ナビゲーションアイコン（ハンバーガーメニュー）の三本線部分です。-->
-        <!--  ※この三本線はnavbar-toggler-iconのclassに対してbackground-imageで画像が割り当てられています。-->
-        <!--  検証ツールでnavbar-toggler-iconのclassを確認すると分かやすいです。-->
         <span class="navbar-toggler-icon"></span>
       </button>
-      <!--①：collapse-->
-      <!--　お役目のありそうな名刺です。書き換えると動きません。-->
-      <!--②：navbar-collapse-->
-      <!--　Bootstrapのクラスです。これも書き換えたら動きません。-->
-      <!--③：#navbarNavDropdown-->
-      <!--　buttonブロックの照準先です。照準元と同期できれば書き換えれます。-->
       <div class="collapse navbar-collapse" id="navbarNavDropdown">
         <ul class="navbar-nav ml-auto">
-        <!--user_signed_inはdevise側で用意しているヘルパーです-->
-        <!--userがログイン中ならtrueが、ログアウト中ならfalseが返されます-->
         <% if user_signed_in? %>
-          <%= render 'layouts/li', text: "Home", url: user_path(current_user), icon: "fa-home" %>
-          <%= render 'layouts/li', text: "Users", url: users_path, icon: "fa-users" %>
-          <%= render 'layouts/li', text: "Books", url: books_path, icon: "fa-book-open" %>
-          <!--ログアウト時だけHTTP動詞が:deleteなので部分テンプレート化から外します。-->
-          <!--一応、残り７つの部分テンプレートに:get動詞を投げれば全部部分テンプレートでも収まります。-->
-          <li class="nav-item">
-            <%= link_to " Log out", destroy_user_session_path, method: :delete, class: "fas fa-sign-out-alt nav-link text-light" %>
-          </li>
+          <li><%= link_to ' Home',user_path(current_user),class: 'fas fa-home nav-link text-light' %></li>
+          <li><%= link_to ' Users',users_path,class: 'fas fa-users nav-link text-light' %></li>
+          <li><%= link_to ' Books',books_path ,class: 'fas fa-book-open nav-link text-light'%></li>
+          <li><%= link_to ' logout', destroy_user_session_path, method: :delete,class: 'fas fa-sign-out-alt nav-link text-light' %></li>
         <% else %>
-          <%= render 'layouts/li', text: "Home", url: root_path, icon: "fa-home" %>
-          <%= render 'layouts/li', text: "About", url: about_path, icon: "fa-link" %>
-          <%= render 'layouts/li', text: "Sign up", url: new_user_registration_path, icon: "fa-user-plus" %>
-          <%= render 'layouts/li', text: "Log in", url: new_user_session_path, icon: "fa-sign-in-alt" %>
+          <li><%= link_to ' Home',root_path,class: 'fas fa-home nav-link text-light' %></li>
+          <li><%= link_to ' About',home_about_path,class: 'fas fa-link nav-link text-light' %></li>
+          <li><%= link_to ' sign up', new_user_registration_path,class: 'fas fa-user-plus nav-link text-light' %></li>
+          <li><%= link_to ' login', new_user_session_path ,class: 'fas fa-sign-in-alt nav-link text-light'%></li>
         <% end %>
         </ul>
       </div>
-
     </div>
   </nav>
 </header>
