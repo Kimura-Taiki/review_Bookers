@@ -24,9 +24,11 @@
 
   <body>
     <%= render 'layouts/header' %>
-    <!--フラッシュメッセージを表示する行です。-->
-    <p id="notice" class = "text-success"><%= notice %></p>
-    <p id="alert" class = "text-danger"><%= alert %></p>
-    <%= yield %>
+    <main>
+      <!--フラッシュメッセージを表示する行です。-->
+      <p id="notice" class = "text-success"><%= notice %></p>
+      <p id="alert" class = "text-danger"><%= alert %></p>
+      <%= yield %>
+    </main>
   </body>
 </html>

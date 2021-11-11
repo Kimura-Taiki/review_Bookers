@@ -11,9 +11,22 @@ class UsersController < ApplicationController
   end
 
   def edit
+    if current_user.id != params[:id].to_i
+      redirect_to user_path(current_user)
+    end
   end
 
   def update
+    p "きてる？"
+    if current_user.update(user_params)
+      redirect_to user_path(current_user)
+    else
+      render :edit
+    end
   end
 
+  private
+  def user_params
+    params.require(:user).permit(:name, :profile_image, :introduction)
+  end
 end

@@ -1,19 +1,7 @@
 <!--グリット制の基準となるコンテナを作ります-->
 <!--標準では横に３文字の余白、幅576未満の際に左右余白を消すという意味です-->
 <div class = "container px-5 px-sm-0">
-  <!--バリテーションエラーを表示する行です-->
-  <% if @new.errors.any? %>
-    <div id = "error_explanation">
-      <div class = "alert alert-danger">
-        <h2><%= @new.errors.count %>errors prohibited this obj from being saved:</h2>
-        <ul>
-          <% @new.errors.full_messages.each do |message| %>
-            <li><%= message %></li>
-          <% end %>
-        </ul>
-      </div>
-    </div>
-  <% end %>
+  <%= render 'layouts/error', model: @new %>
 
   <!--コンテナはいくつかの行に分かれます-->
   <div class = "row">
