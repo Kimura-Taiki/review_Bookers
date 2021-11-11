@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  # 応用課題３の枝に到着したぞ
 
   # devise関連の道筋を定義します。
   devise_for :users
