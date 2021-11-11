@@ -17,8 +17,8 @@ class UsersController < ApplicationController
   end
 
   def update
-    p "きてる？"
     if current_user.update(user_params)
+      flash[:notice] = "You have updated user successfully."
       redirect_to user_path(current_user)
     else
       render :edit

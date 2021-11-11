@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   # トップページの道筋を定義します。
   root to: 'homes#top'
   # アバウトへの道筋が浮くのでそれも定義します。
-  get "/about", to: 'homes#about'
+  get "home/about", to: 'homes#about', as: "about"
   # UserとBookはresourcesで道筋を定義します。
   # Userは単数でも行けそうですが、他人の:showを見るために複数形にしています。
   # ちなみにreso複数形、model単数形だとindex_model_pathという変な名前ができます

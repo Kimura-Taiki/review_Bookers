@@ -1,6 +1,8 @@
 class ApplicationController < ActionController::Base
   # devise利用の機能（ユーザ登録、ログイン認証など）が使われる場合、その前にconfigure_permitted_parametersが実行されます。
   before_action :configure_permitted_parameters, if: :devise_controller?
+  before_action :authenticate_user!, except: [:top, :about]
+
 
   # privateは自コントローラーのみでしか呼び出せません
   # 一方、protectedは他コントローラーからも呼び出せます
